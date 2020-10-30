@@ -36,7 +36,7 @@ export type UploadLinkOptions = HttpOptions &
 // export
 // ==============================================================================
 
-export { ReactNativeFile, isExtractableFile } from 'extract-files';
+export { ExtractableFile, ReactNativeFile, isExtractableFile } from 'extract-files';
 
 /**
  * Creates a [terminating Apollo Link](https://www.apollographql.com/docs/link/overview/#terminating-links) capable of file uploads.
