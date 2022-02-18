@@ -692,6 +692,7 @@ switch (mockResult.type) {
 /* getState and setState */
 // $ExpectError
 expect.setState(true);
+// $ExpectError
 expect.setState({for: 'state'});
 const expectState = expect.getState();
 // $ExpectType string
@@ -708,8 +709,17 @@ expectState.expectedAssertionsNumber;
 expectState.isExpectingAssertions;
 // $ExpectType Error[]
 expectState.suppressedErrors;
-// allows additional state properties added by getState
-expectState.for;
+
+// doing this break everything...
+// declare module 'expect' {
+//     interface MatcherState {
+//         customField: string;
+//       }
+// }
+expect.setState({customField: 'state'});
+
+// allows additional state properties added by augmentation
+expectState.customField;
 
 /* Snapshot serialization */
 
